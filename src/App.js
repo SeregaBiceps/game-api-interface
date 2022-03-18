@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import Layout from './route/Layout';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Main from './views/Main';
+import MiningField from './views/MiningField';
+import Resource from './views/Resource';
+import Warehouse from './views/Warehouse';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Redirect from="/" to="/mining_field" exact />
+          <Route exact path="/main" component={() => <Main />} />
+          <Route exact path="/mining_field" component={() => <MiningField />} />
+          <Route exact path="/resource" component={() => <Resource />} />
+          <Route exact path="/warehouse" component={() => <Warehouse />} />
+          <Redirect to="/mining_field" />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
