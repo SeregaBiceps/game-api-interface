@@ -52,12 +52,12 @@ const Main = (props) => {
 				</VerticalFlex>
 
 				<VerticalFlex>
-					<TextField value={login} label="Имя" variant="outlined" onChange={(e) => setLogin(e.currentTarget.value)} />
-					<TextField value={password} label="Пароль" variant="outlined" onChange={(e) => setPassword(e.currentTarget.value)} />
-					<Button variant="contained" color="warning" onClick={() => post({ path: 'register', data: { login, password } }, ({ accessToken }) => setAccessToken(accessToken))}>
+					<TextField value={login} label="Имя" variant="outlined" margin="dense" onChange={(e) => setLogin(e.currentTarget.value)} />
+					<TextField value={password} label="Пароль" variant="outlined" margin="dense" onChange={(e) => setPassword(e.currentTarget.value)} />
+					<Button variant="get" onClick={() => post({ path: 'register', data: { login, password } }, ({ accessToken }) => setAccessToken(accessToken))}>
 						Регистрация
 					</Button>
-					<Button variant="contained" color="warning" onClick={() => post({ path: 'login', data: { login, password } }, ({ accessToken }) => setAccessToken(accessToken))}>
+					<Button variant="post" onClick={() => post({ path: 'login', data: { login, password } }, ({ accessToken }) => setAccessToken(accessToken))}>
 						Авторизация
 					</Button>
 				</VerticalFlex>
@@ -68,7 +68,7 @@ const Main = (props) => {
 							<TextField name="x" label="X" variant="outlined" />
 							<TextField name="y" label="Y" variant="outlined" />
 						</div>
-						<Button variant="contained" color="success" type="submit">
+						<Button variant="get" type="submit">
 							Получить список игроков рядом
 						</Button>
 					</VerticalFlex>
@@ -80,7 +80,7 @@ const Main = (props) => {
 							<TextField name="x" label="X" variant="outlined" />
 							<TextField name="y" label="Y" variant="outlined" />
 						</div>
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Перемещение
 						</Button>
 					</VerticalFlex>
@@ -89,14 +89,14 @@ const Main = (props) => {
 				<form onSubmit={(e) => post({ path: 'deposit', data: parseForm(e, ['amount']) })}>
 					<VerticalFlex>
 						<TextField name="amount" label="Количество" variant="outlined" />
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Пополнить кошелек
 						</Button>
 					</VerticalFlex>
 				</form>
 
 				<VerticalFlex>
-					<Button variant="contained" color="success" onClick={() => get({ path: 'nfts' })}>
+					<Button variant="get" onClick={() => get({ path: 'nfts' })}>
 						Получить все NFT
 					</Button>
 				</VerticalFlex>
@@ -112,14 +112,14 @@ const Main = (props) => {
 							<MenuItem value={'wood'}>Wood</MenuItem>
 							<MenuItem value={'water'}>Water</MenuItem>
 						</Select>
-						<Button type="submit" variant="contained" color="warning">
+						<Button type="submit" variant="post">
 							Новый ресурс
 						</Button>
 					</VerticalFlex>
 				</form>
 
 				<VerticalFlex>
-					<Button variant="contained" color="success" onClick={() => get({ path: "resources" })}>
+					<Button variant="get" onClick={() => get({ path: "resources" })}>
 						Список ресурсов
 					</Button>
 				</VerticalFlex>
@@ -138,26 +138,26 @@ const Main = (props) => {
 							<TextField name="x" label="X" variant="outlined" />
 							<TextField name="x" label="Y" variant="outlined" />
 						</div>
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Новый объект
 						</Button>
 					</VerticalFlex>
 				</form>
 
 				<VerticalFlex>
-					<Button variant="contained" color="success" onClick={() => get({ path: 'objects' })}>
+					<Button variant="get" onClick={() => get({ path: 'objects' })}>
 						Список Объектов
 					</Button>
 				</VerticalFlex>
 
 				<VerticalFlex>
-					<Button variant="contained" color="error" onClick={() => post({ path: 'reset', data: { type: 'Player' } })}>
+					<Button variant="del" onClick={() => post({ path: 'reset', data: { type: 'Player' } })}>
 						Сброс пользователей
 					</Button>
 				</VerticalFlex>
 
 				<VerticalFlex>
-					<Button variant="contained" color="error" onClick={() => post({ path: 'reset_all' })}>
+					<Button variant="del" onClick={() => post({ path: 'reset_all' })}>
 						Сбросить ядерную боеголовку на Киев
 					</Button>
 				</VerticalFlex>
@@ -168,7 +168,7 @@ const Main = (props) => {
 					{logs.map((log, index) => <Log key={index} log={log} />)}
 				</Logs>
 				<VerticalFlex>
-					<Button variant="contained" color="error" onClick={() => setLogs([])}>
+					<Button variant="del" onClick={() => setLogs([])}>
 						Очистить логи
 					</Button>
 				</VerticalFlex>

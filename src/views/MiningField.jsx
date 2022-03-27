@@ -49,12 +49,12 @@ const MiningField = (props) => {
 				<form onSubmit={(e) => post({ path: 'mining_field', data: parseForm(e, ['x', 'y', 'type', 'size']) })}>
 					<VerticalFlex>
 						<div className="d-flex justify-content-between">
-							<TextField name="x" label="X" variant="outlined" value={5} />
-							<TextField name="y" label="Y" variant="outlined" value={5} />
-							<TextField name="type" label="Type" variant="outlined" />
-							<TextField name="size" label="Size" variant="outlined" value={2} />
+							<TextField name="x" label="X" variant="outlined" margin="dense" value={5} />
+							<TextField name="y" label="Y" variant="outlined" margin="dense" value={5} />
+							<TextField name="type" label="Type" variant="outlined" margin="dense" />
+							<TextField name="size" label="Size" variant="outlined" margin="dense" value={2} />
 						</div>
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Создать веселую ферму
 						</Button>
 					</VerticalFlex>
@@ -65,7 +65,7 @@ const MiningField = (props) => {
 						<div className="d-flex justify-content-between">
 							<TextField name="id" label="id" variant="outlined" />
 						</div>
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Начать майнинг
 						</Button>
 					</VerticalFlex>
@@ -76,7 +76,7 @@ const MiningField = (props) => {
 						<div className="d-flex justify-content-between">
 							<TextField name="id" label="id" variant="outlined" />
 						</div>
-						<Button variant="contained" color="success" type="submit">
+						<Button variant="get" type="submit">
 							Получить инфу по майнингу
 						</Button>
 					</VerticalFlex>
@@ -87,7 +87,7 @@ const MiningField = (props) => {
 						<div className="d-flex justify-content-between">
 							<TextField name="id" label="id" variant="outlined" />
 						</div>
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Остановить майнинг
 						</Button>
 					</VerticalFlex>
@@ -98,7 +98,7 @@ const MiningField = (props) => {
 					{logs.map((log, index) => <Log key={index} log={log} />)}
 				</Logs>
 				<VerticalFlex>
-					<Button variant="contained" color="error" onClick={() => setLogs([])}>
+					<Button variant="del" onClick={() => setLogs([])}>
 						Очистить логи
 					</Button>
 				</VerticalFlex>

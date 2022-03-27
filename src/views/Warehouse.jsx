@@ -51,11 +51,11 @@ const Warehouse = (props) => {
 				<form onSubmit={(e) => post({ path: 'warehouse', data: parseForm(e, ['capacity', 'x', 'y']) })}>
 					<VerticalFlex>
 						<div className="d-flex justify-content-between">
-							<TextField name="capacity" label="Capacity" variant="outlined" value={5} />
-							<TextField name="x" label="X" variant="outlined" value={5} />
-							<TextField name="y" label="Y" variant="outlined" value={5} />
+							<TextField name="capacity" label="Capacity" variant="outlined" margin="dense" value={5} />
+							<TextField name="x" label="X" variant="outlined" margin="dense" value={5} />
+							<TextField name="y" label="Y" variant="outlined" margin="dense" value={5} />
 						</div>
-						<Button variant="contained" color="warning" type="submit">
+						<Button variant="post" type="submit">
 							Создать склад
 						</Button>
 					</VerticalFlex>
@@ -66,7 +66,7 @@ const Warehouse = (props) => {
 						<div className="d-flex justify-content-between">
 							<TextField name="id" label="Id" variant="outlined" />
 						</div>
-						<Button variant="contained" color="error" type="submit">
+						<Button variant="del" type="submit">
 							Удалить склад
 						</Button>
 					</VerticalFlex>
@@ -77,7 +77,7 @@ const Warehouse = (props) => {
 					{logs.map((log, index) => <Log key={index} log={log} />)}
 				</Logs>
 				<VerticalFlex>
-					<Button variant="contained" color="error" onClick={() => setLogs([])}>
+					<Button variant="del" onClick={() => setLogs([])}>
 						Очистить логи
 					</Button>
 				</VerticalFlex>

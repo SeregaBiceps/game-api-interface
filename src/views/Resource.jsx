@@ -48,9 +48,9 @@ const Resource = (props) => {
                 <form onSubmit={(e) => post({ path: 'resource', data: parseForm(e, ['type']) })}>
                     <VerticalFlex>
                         <div className="d-flex justify-content-between">
-                            <TextField name="type" label="Type" variant="outlined" />
+                            <TextField name="type" label="Type" variant="outlined" margin="dense" />
                         </div>
-                        <Button variant="contained" color="warning" type="submit">
+                        <Button variant="post" type="submit">
                             Создать ресурс
                         </Button>
                     </VerticalFlex>
@@ -61,7 +61,7 @@ const Resource = (props) => {
                     {logs.map((log, index) => <Log key={index} log={log} />)}
                 </Logs>
                 <VerticalFlex>
-                    <Button variant="contained" color="error" onClick={() => setLogs([])}>
+                    <Button variant="del" onClick={() => setLogs([])}>
                         Очистить логи
                     </Button>
                 </VerticalFlex>
