@@ -21,6 +21,7 @@ const Header = () => {
 	{ display: 'Mining field', route: 'mining_field' }, 
 	{ display: 'Resource', route: 'resource' },
 	{ display: 'Warehouse', route: 'warehouse' },
+  { display: 'Land', route: 'land' }
   ];
 
   const handleOpenNavMenu = (event) => {

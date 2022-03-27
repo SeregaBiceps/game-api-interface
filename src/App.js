@@ -12,6 +12,7 @@ import Main from './views/Main';
 import MiningField from './views/MiningField';
 import Resource from './views/Resource';
 import Warehouse from './views/Warehouse';
+import Land from './views/Land';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/mining_field" component={() => <MiningField />} />
           <Route exact path="/resource" component={() => <Resource />} />
           <Route exact path="/warehouse" component={() => <Warehouse />} />
+          <Route exact path="/land" component={() => <Land />} />
           <Redirect to="/mining_field" />
         </Switch>
       </Layout>
