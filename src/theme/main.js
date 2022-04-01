@@ -70,13 +70,6 @@ const theme = createTheme({
 			]
 		},
 		MuiTypography: {
-			styleOverrides: {
-				root: {
-					background: 'rgba(0, 0, 0, .2)',
-					padding: '10px 0',
-
-				}
-			},
 			variants: [
 				{
 					props: { variant: 'nav-link' },

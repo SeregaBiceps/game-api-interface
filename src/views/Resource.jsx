@@ -6,12 +6,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { Row, Col } from 'react-bootstrap'
 import api from '../api/api'
 import styled from 'styled-components'
-import Log from '../components/UI/Log'
+import Logs from '../components/UI/Logs'
 import { parseForm } from '../lib/lib';
-
-const Logs = styled.div`
-	border: 1px solid black;
-`
 
 const VerticalFlex = styled.div`
 	display: flex;
@@ -57,9 +53,7 @@ const Resource = (props) => {
                 </form>
             </Col>
             <Col xs={6}>
-                <Logs>
-                    {logs.map((log, index) => <Log key={index} log={log} />)}
-                </Logs>
+                <Logs logs={logs}/>
                 <VerticalFlex>
                     <Button variant="del" onClick={() => setLogs([])}>
                         Очистить логи
