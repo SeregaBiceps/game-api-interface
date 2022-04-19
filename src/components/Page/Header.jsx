@@ -21,7 +21,10 @@ const Header = () => {
 	{ display: 'Mining field', route: 'mining_field' }, 
 	{ display: 'Resource', route: 'resource' },
 	{ display: 'Warehouse', route: 'warehouse' },
-  { display: 'Land', route: 'land' }
+  { display: 'Land', route: 'land' },
+  { display: 'Balance', route: 'balance' },
+  { display: 'Building', route: 'building' },
+  { display: 'User', route: 'user' },
   ];
 
   const handleOpenNavMenu = (event) => {

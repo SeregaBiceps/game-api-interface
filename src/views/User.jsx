@@ -15,7 +15,7 @@ const VerticalFlex = styled.div`
 	margin-bottom: 20px;
 `
 
-const MiningField = (props) => {
+const User = (props) => {
 
 	const [logs, setLogs] = useState([])
 	const [login] = useState('xxx')
@@ -23,7 +23,6 @@ const MiningField = (props) => {
 	const [accessToken, setAccessToken] = useState('')
 
 	const post = (data, cb) => {
-		console.log(accessToken)
 		api.post(data, { accessToken }).then(({ data }) => {
 			setLogs([...logs, data])
 			if (cb) cb(data)
@@ -34,6 +33,10 @@ const MiningField = (props) => {
 		api.get(data, { accessToken }).then(({ data }) => setLogs([...logs, data])).catch((data) => setLogs([...logs, data]))
 	}
 
+	const del = (data) => {
+		api.delete(data, { accessToken }).then(({ data }) => setLogs([...logs, data])).catch((data) => setLogs([...logs, data]))
+	}
+
 	useEffect(() => {
 		post({ path: 'login', data: { login, password } }, ({ accessToken }) => setAccessToken(accessToken))
 	}, [])
@@ -41,53 +44,59 @@ const MiningField = (props) => {
 	return (
 		<Row>
 			<Col xs={6}>
+				<form onSubmit={(e) => get({ path: 'players', data: parseForm(e, ['x', 'y']) })}>
+						<VerticalFlex>
+							<div className="d-flex justify-content-between">
+								<TextField name="x" label="X" variant="outlined" margin="dense" />
+								<TextField name="y" label="Y" variant="outlined" margin="dense" />
+							</div>
+							<Button variant="get" type="submit">
+								Получить игроков
+							</Button>
+						</VerticalFlex>
+				</form>
 
-				<form onSubmit={(e) => post({ path: 'mining_field', data: parseForm(e, ['x', 'y', 'type', 'size']) })}>
+                <form onSubmit={(e) => post({ path: 'register', data: parseForm(e, ['login', 'password']) })}>
 					<VerticalFlex>
 						<div className="d-flex justify-content-between">
-							<TextField name="x" label="X" variant="outlined" margin="dense" value={5} />
-							<TextField name="y" label="Y" variant="outlined" margin="dense" value={5} />
-							<TextField name="type" label="Type" variant="outlined" margin="dense" />
-							<TextField name="size" label="Size" variant="outlined" margin="dense" value={2} />
+							<TextField name="login" label="Login" variant="outlined" margin="dense"/>
+							<TextField name="password" label="Password" variant="outlined" margin="dense"/>
 						</div>
 						<Button variant="post" type="submit">
-							Создать веселую ферму
+							Регистрация игроков
 						</Button>
 					</VerticalFlex>
 				</form>
 
-				<form onSubmit={(e) => post({ path: 'mining_field/start', data: parseForm(e, ['id']) })}>
+                <form onSubmit={(e) => post({ path: 'login', data: parseForm(e, ['login', 'password']) })}>
 					<VerticalFlex>
 						<div className="d-flex justify-content-between">
-							<TextField name="id" label="id" variant="outlined" />
+							<TextField name="login" label="Login" variant="outlined" margin="dense"/>
+							<TextField name="password" label="Password" variant="outlined" margin="dense"/>
 						</div>
 						<Button variant="post" type="submit">
-							Начать майнинг
+							Login HTTP
 						</Button>
 					</VerticalFlex>
 				</form>
 
-				<form onSubmit={(e) => get({ path: 'mining_field', data: parseForm(e, ['id']) })}>
+                <form onSubmit={(e) => post({ path: 'reset', data: parseForm(e)})}>
 					<VerticalFlex>
-						<div className="d-flex justify-content-between">
-							<TextField name="id" label="id" variant="outlined" />
-						</div>
-						<Button variant="get" type="submit">
-							Получить информацию по майнингу
-						</Button>
-					</VerticalFlex>
-				</form>
-
-				<form onSubmit={(e) => post({ path: 'mining_field/stop', data: parseForm(e, ['id']) })}>
-					<VerticalFlex>
-						<div className="d-flex justify-content-between">
-							<TextField name="id" label="id" variant="outlined" />
-						</div>
 						<Button variant="post" type="submit">
-							Остановить майнинг
+							Перезагрузить
 						</Button>
 					</VerticalFlex>
 				</form>
+
+                <form onSubmit={(e) => post({ path: 'reset_all', data: parseForm(e) })}>
+					<VerticalFlex>
+						<Button variant="post" type="submit">
+							Перезагрузить всё
+						</Button>
+					</VerticalFlex>
+				</form>
+
+				
 			</Col>
 			<Col xs={6}>
 				<Logs logs={logs}/>
@@ -101,4 +110,4 @@ const MiningField = (props) => {
 	)
 }
 
-export default (MiningField)
+export default (User)
